@@ -1,0 +1,22 @@
+server {
+    listen 3000 default_server;
+
+    root /code;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html?$args;
+
+        add_header cache-control "public, max-age=3600, s-max-age=3600";
+        add_header x-ua-compatible "IE=edge,chrome=1";
+        add_header x-xss-protection "1; mode=block";
+        add_header x-frame-options SAMEORIGIN;
+    }
+
+    location ~*  \.(jpg|jpeg|png|gif|ico|css|js|svg|woff|eot|ttf)$ { 
+        root  /code; 
+        index  index.html; 
+        add_header cache-control "public, max-age=631138519, s-max-age=631138519"; 
+        error_page 404 /404; 
+    } 
+}
