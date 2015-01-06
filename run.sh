@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set +e
+
 # set SERVICE_NAME in nginx config
 sed -i -e "s|\%SERVICE_NAME\%|${SERVICE_NAME}|" /etc/nginx/nginx.conf
 
