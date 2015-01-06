@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# set SERVICE_NAME in nginx config
+sed -i -e "s|\%SERVICE_NAME\%|${SERVICE_NAME}|" /etc/nginx/nginx.conf
+
+# Get all env variables starting with APP_ and replace them in CONFIG_FILE
 variables=`env | grep APP_`
 arr=($variables)
 
